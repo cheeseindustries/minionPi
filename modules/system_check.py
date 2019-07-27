@@ -2,7 +2,6 @@ import serial
 from time import sleep
 
 robot = serial.Serial('/dev/ttyUSB0', 9600)
-connected = False
 
 def checkSerialConnectionReady(func):
     def wrapper(*args, **kwargs):
