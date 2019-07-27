@@ -4,7 +4,7 @@ from time import sleep
 robot = serial.Serial('/dev/ttyUSB0', 9600)
 connected = False
 
-def checkSerialConnection(func):
+def checkSerialConnectionReady(func):
     def wrapper(*args, **kwargs):
         verified = False
         print("Verifying serial port...")
@@ -17,7 +17,7 @@ def checkSerialConnection(func):
         func(*args, **kwargs)
     return wrapper
 
-@checkSerialConnection        
+@checkSerialConnectionReady        
 def check_commands(connection):
     print("Trying forward motion...")
     connection.write('forward')
